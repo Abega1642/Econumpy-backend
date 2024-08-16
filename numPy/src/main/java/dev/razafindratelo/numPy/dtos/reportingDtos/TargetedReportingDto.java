@@ -1,14 +1,19 @@
-package dev.razafindratelo.numPy.dtos.postDtos.reportingDtos;
+package dev.razafindratelo.numPy.dtos.reportingDtos;
 
 import dev.razafindratelo.numPy.dtos.userDtos.UserDto;
 import dev.razafindratelo.numPy.entity.reporting.Level;
 import dev.razafindratelo.numPy.entity.reporting.Reporting;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-
-public class TargetedReporting extends Reporting {
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class TargetedReportingDto extends Reporting {
     private UserDto addressee;
 
-    public TargetedReporting(
+    public TargetedReportingDto(
             String id,
             String title,
             String description,

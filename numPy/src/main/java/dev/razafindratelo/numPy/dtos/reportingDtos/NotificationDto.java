@@ -1,4 +1,4 @@
-package dev.razafindratelo.numPy.dtos.postDtos.reportingDtos;
+package dev.razafindratelo.numPy.dtos.reportingDtos;
 
 import dev.razafindratelo.numPy.entity.reporting.Level;
 import lombok.AllArgsConstructor;

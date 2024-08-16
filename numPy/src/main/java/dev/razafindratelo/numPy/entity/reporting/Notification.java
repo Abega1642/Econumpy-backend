@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "notification")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "notification_type", discriminatorType = DiscriminatorType.STRING)
-public abstract class Notification{
+public class Notification{
     @Id
     private String id;
 

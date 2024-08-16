@@ -1,4 +1,4 @@
-package dev.razafindratelo.numPy.mapper.userMapper;
+package dev.razafindratelo.numPy.mapper.userMapper.organizationMapper;
 
 import dev.razafindratelo.numPy.dtos.userDtos.OrganizationDto;
 import dev.razafindratelo.numPy.entity.user.Organization;
