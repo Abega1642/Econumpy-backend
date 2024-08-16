@@ -18,6 +18,6 @@ public class PostDto {
     private long like;
     private long dislike;
     private LocalDate publishedDate;
-    private UserDto author;
+    private String authorEmail;
 }
 

@@ -6,6 +6,7 @@ import dev.razafindratelo.numPy.entity.post.Event;
 import dev.razafindratelo.numPy.entity.post.Post;
 import dev.razafindratelo.numPy.entity.user.User;
 import dev.razafindratelo.numPy.mapper.postMapper.EventMapper;
+import dev.razafindratelo.numPy.mapper.statusMapper.StatusMapper;
 import dev.razafindratelo.numPy.repositories.postRepository.PostRepository;
 import dev.razafindratelo.numPy.services.postServices.EventService;
 import lombok.AllArgsConstructor;
@@ -32,7 +33,7 @@ public class EventServiceImpl implements EventService {
                         new ResourceNotFoundException("User with id " + eventId + " wasn't found !")
                 );
 
-        event.setStatus(eventDto.getStatus());
+        event.setStatus(StatusMapper.statusMapper2(eventDto.getStatus()));
         event.setDescription(eventDto.getDescription());
         event.setTitle(eventDto.getTitle());
 

@@ -15,10 +15,10 @@ public class WishListDto extends PostDto{
             long like,
             long dislike,
             LocalDate publishedDate,
-            UserDto author,
+            String authorEmail,
             List<UserDto> voters
     ) {
-        super(postId, title, description, like, dislike, publishedDate, author);
+        super(postId, title, description, like, dislike, publishedDate, authorEmail);
         this.voters = voters;
     }
 }

@@ -13,37 +13,37 @@ import java.util.List;
 public class OrganizationController {
     private IndividualService individualService;
 
-    @GetMapping("/individual")
+    @GetMapping("/organization")
     public ResponseEntity<List<IndividualDto>> getIndividuals() {
         List<IndividualDto> individualDtos = individualService.getIndividuals();
         return ResponseEntity.ok(individualDtos);
     }
 
-    @GetMapping("/individual/{individualId}")
+    @GetMapping("/organization/{organization}")
     public ResponseEntity<IndividualDto> getUser(@PathVariable String individualId) {
         IndividualDto individualDto = individualService.getIndividualById(individualId);
         return ResponseEntity.ok(individualDto);
     }
 
-    @PostMapping("/individual/authentication")
+    @PostMapping("/organization/authentication")
     public ResponseEntity<Boolean> loginUser(@RequestBody IndividualDto individualDto) {
         Boolean check = individualService.checkUserLogin(individualDto);
         return (check) ? ResponseEntity.ok(true) : ResponseEntity.status(HttpStatus.FORBIDDEN).build();
     }
 
-    @PostMapping("/individual/add")
+    @PostMapping("/organization/add")
     public ResponseEntity<IndividualDto> createUser(@RequestBody IndividualDto individualDto) {
         IndividualDto addUser = individualService.createIndividual(individualDto);
         return new ResponseEntity<>(addUser, HttpStatus.CREATED);
     }
 
-    @PutMapping("/individual/update/{individualId}")
+    @PutMapping("/organization/update/{individualId}")
     public ResponseEntity<IndividualDto> updateUser(@PathVariable("individualId") String individualId, @RequestBody IndividualDto individualDto) {
         IndividualDto updateUser = individualService.updateIndividual(individualId, individualDto);
         return new ResponseEntity<>(updateUser, HttpStatus.OK);
     }
 
-    @DeleteMapping("/individual/delete/{id}")
+    @DeleteMapping("/organization/delete/{id}")
     public String deleteUser(@PathVariable("id") String  id) {
         individualService.deleteIndividualById(id);
         return "individual deleted with success !";
