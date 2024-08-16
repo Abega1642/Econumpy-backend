@@ -1,4 +1,4 @@
-package dev.razafindratelo.backend;
+package dev.razafindratelo.numPy;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
