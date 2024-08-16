@@ -1,6 +1,16 @@
 package dev.razafindratelo.numPy.dtos.postDtos.reportingDtos;
 
-import dev.razafindratelo.numPy.dtos.postDtos.PostDto;
+import dev.razafindratelo.numPy.entity.post.reporting.Level;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-public class NotificationDto extends PostDto {
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class NotificationDto {
+    private String id;
+    private String title;
+    private String description;
+    private Level level;
 }
