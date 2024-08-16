@@ -1,4 +1,4 @@
-package dev.razafindratelo.numPy.entity.post.reporting;
+package dev.razafindratelo.numPy.entity.reporting;
 
 public enum Level {
     EMERGENCY,

@@ -17,10 +17,13 @@ import java.util.List;
 public class Community {
     @Id
     private String name;
+
     @Column
     private String description;
+
     @Column
     private Domain domain;
+
     @Column
     private LocalDate creationDate;
     

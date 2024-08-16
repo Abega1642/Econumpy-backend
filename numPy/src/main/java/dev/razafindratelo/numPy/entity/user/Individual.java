@@ -5,15 +5,17 @@ import dev.razafindratelo.numPy.entity.post.Post;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
+@Entity
 @DiscriminatorValue("INDIVIDUAL")
 public class Individual extends User {
 
@@ -28,8 +30,10 @@ public class Individual extends User {
             String username,
             List<Community> communityList,
             List<Post> posts,
-            long score
+            long score,
+            LocalDate birthDate
     ) {
         super(email, password, address, phoneNumber, username, communityList, posts, score);
+        this.birthDate = birthDate;
     }
 }

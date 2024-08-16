@@ -1,8 +1,8 @@
 package dev.razafindratelo.numPy.dtos.postDtos.reportingDtos;
 
 
-import dev.razafindratelo.numPy.entity.post.reporting.Level;
-import dev.razafindratelo.numPy.entity.post.reporting.Notification;
+import dev.razafindratelo.numPy.entity.reporting.Level;
+import dev.razafindratelo.numPy.entity.reporting.Notification;
 
 public class ReportingDto extends Notification {
     private String body;

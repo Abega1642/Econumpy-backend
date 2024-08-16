@@ -1,26 +1,31 @@
 package dev.razafindratelo.numPy.entity.post;
 
 import dev.razafindratelo.numPy.entity.user.User;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-
+import lombok.NoArgsConstructor;
 import java.time.LocalDate;
-import java.util.List;
+
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
+@DiscriminatorValue("WISHLIST")
 public class WishList extends Post{
-    private List<User> voters;
+
+    @Column(nullable = false)
+    private long vote;
 
     public WishList(String postId,
                     String title,
                     String description,
                     long like,
                     long dislike,
-                    LocalDate publishedDate,
-                    List<User> voters
+                    LocalDate publishedDate
     ) {
         super(postId, title, description, like, dislike, publishedDate);
-        this.voters = voters;
+        this.vote = 0;
     }
 }

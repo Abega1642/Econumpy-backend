@@ -1,8 +1,22 @@
 package dev.razafindratelo.numPy.entity.post;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDate;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@DiscriminatorValue("OFFER")
 public class Offer extends Post {
+
+    @Column(nullable = false)
     private Status status;
 
     public Offer(String postId,

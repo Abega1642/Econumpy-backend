@@ -1,6 +1,6 @@
 package dev.razafindratelo.numPy.dtos.postDtos.reportingDtos;
 
-import dev.razafindratelo.numPy.entity.post.reporting.Level;
+import dev.razafindratelo.numPy.entity.reporting.Level;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,9 +1,6 @@
 package dev.razafindratelo.numPy.entity.post;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -13,6 +10,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Entity
 @Table(name = "post")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "post_type", discriminatorType = DiscriminatorType.STRING)
 public abstract class Post {
 
     @Id

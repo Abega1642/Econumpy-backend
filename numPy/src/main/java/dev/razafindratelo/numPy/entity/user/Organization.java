@@ -4,14 +4,16 @@ import dev.razafindratelo.numPy.entity.community.Community;
 import dev.razafindratelo.numPy.entity.post.Post;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.Entity;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Objects;
 
-@Getter
-@Setter
+
+@Data
+@NoArgsConstructor
+@Entity
 @DiscriminatorValue("ORGANIZATION")
 public class Organization extends User {
 

@@ -1,4 +1,4 @@
-package dev.razafindratelo.numPy.entity.post.reporting;
+package dev.razafindratelo.numPy.entity.reporting;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
