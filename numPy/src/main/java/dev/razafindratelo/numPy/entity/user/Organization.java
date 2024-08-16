@@ -17,16 +17,16 @@ import java.util.List;
 @DiscriminatorValue("ORGANIZATION")
 public class Organization extends User {
 
-    @Column(name = "nif", nullable = false)
+    @Column(name = "nif")
     private String NIF;
 
-    @Column(name = "stat", nullable = false)
+    @Column(name = "stat")
     private String STAT;
 
-    @Column(name = "accreditation", nullable = false)
+    @Column(name = "accreditation")
     private String accreditation;
 
-    @Column(name = "creation_date",nullable = false)
+    @Column(name = "creation_date")
     private LocalDate creationDate;
 
     public Organization(

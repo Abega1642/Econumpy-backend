@@ -12,6 +12,7 @@ import dev.razafindratelo.numPy.mapper.statusMapper.StatusMapper;
 import dev.razafindratelo.numPy.mapper.userMapper.individualMapper.IndividualMapper;
 import dev.razafindratelo.numPy.mapper.userMapper.organizationMapper.OrganizationMapper;
 import dev.razafindratelo.numPy.repositories.postRepository.PostRepository;
+import dev.razafindratelo.numPy.repositories.userRepository.UserRepository;
 import dev.razafindratelo.numPy.services.individualService.IndividualService;
 import dev.razafindratelo.numPy.services.individualService.individualImp.IndividualServiceImp;
 import dev.razafindratelo.numPy.services.organizationService.OrganizationService;
@@ -26,23 +27,13 @@ import java.util.List;
 @Service
 public class EventServiceImpl implements EventService {
 
+    private final UserRepository userRepository;
     PostRepository postRepository;
 
     @Override
-    public EventDto createEvent(EventDto eventDto, String userMail) {
-        IndividualService individualService = new IndividualServiceImp();
-        Individual individual = IndividualMapper.toIndividual(individualService.getIndividualById(userMail));
-        OrganizationService organizationService = new OrganizationServiceImpl();
-        Organization organization = OrganizationMapper.toOrganization(organizationService.getOrganizationById(userMail));
-        Event createdEvent = new Event();
-        if(individual == null) {
-            createdEvent = postRepository.save(EventMapper.mapToEvent(eventDto, organization));
-        } else if (organization == null) {
-            createdEvent = postRepository.save(EventMapper.mapToEvent(eventDto, individual));
-        } else {
-            throw new ResourceNotFoundException("Event with email " + userMail + " already exists");
-        }
-        return EventMapper.mapToPostDto(createdEvent);
+    public EventDto createEvent(EventDto eventDto, User user) {
+        Event event = postRepository.save(EventMapper.mapToEvent(eventDto, user));
+        return EventMapper.mapToPostDto(event);
     }
 
     @Override

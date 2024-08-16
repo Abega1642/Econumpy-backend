@@ -8,6 +8,7 @@ import dev.razafindratelo.numPy.mapper.userMapper.individualMapper.IndividualMap
 import dev.razafindratelo.numPy.repositories.userRepository.UserRepository;
 import dev.razafindratelo.numPy.services.individualService.IndividualService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -17,14 +18,15 @@ import java.util.List;
 @AllArgsConstructor
 @Service
 public class IndividualServiceImp implements IndividualService {
+    private UserRepository individualRepository;
 
-    static UserRepository individualRepository;
 
     @Override
     public IndividualDto createIndividual(IndividualDto individualDto) {
         if(!checkIndividualUnique(individualDto)){
             throw new ResourceDuplicatedException("this user already exists");
         }
+        System.out.println(individualDto.toString());
         Individual individual = individualRepository.save(IndividualMapper.toIndividual(individualDto));
 
         return IndividualMapper.toIndividualDto(individual);
@@ -50,7 +52,7 @@ public class IndividualServiceImp implements IndividualService {
     @Override
     public IndividualDto getIndividualById(String individualId) {
         Individual individual = (Individual) individualRepository.findById(individualId).orElseThrow(
-                ()-> new ResourceNotFoundException("")
+                ()-> new ResourceNotFoundException("Individual with " + individualId + " not found")
         );
         return IndividualMapper.toIndividualDto(individual);
     }
@@ -71,7 +73,8 @@ public class IndividualServiceImp implements IndividualService {
 
     @Override
     public boolean checkIndividualUnique(IndividualDto individualDto) {
-        List<Individual> individualList = Collections.singletonList((Individual) individualRepository.findAll());
+        List<Individual> individualList = individualRepository.findAll().stream().map(user -> (Individual)user).toList();
+        System.out.println(individualDto.toString());
         for(Individual i : individualList) {
             if (i.getEmail().equals(individualDto.getEmail())) {
                 return false;

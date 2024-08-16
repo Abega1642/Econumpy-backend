@@ -2,6 +2,12 @@ package dev.razafindratelo.numPy.controller;
 
 import dev.razafindratelo.numPy.dtos.postDtos.EventDto;
 import dev.razafindratelo.numPy.dtos.postDtos.PostDto;
+import dev.razafindratelo.numPy.entity.user.Individual;
+import dev.razafindratelo.numPy.entity.user.Organization;
+import dev.razafindratelo.numPy.mapper.userMapper.individualMapper.IndividualMapper;
+import dev.razafindratelo.numPy.mapper.userMapper.organizationMapper.OrganizationMapper;
+import dev.razafindratelo.numPy.services.individualService.IndividualService;
+import dev.razafindratelo.numPy.services.organizationService.OrganizationService;
 import dev.razafindratelo.numPy.services.postServices.EventService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +19,9 @@ import java.util.List;
 @RequestMapping("/api")
 public class EventController {
 
-    private EventService eventService;
+    EventService eventService;
+    IndividualService individualService;
+    OrganizationService organizationService;
 
     @GetMapping("/events")
     public ResponseEntity<List<EventDto>> getEvents() {
@@ -29,7 +37,17 @@ public class EventController {
 
     @PostMapping("/event/add/{userMail}")
     public ResponseEntity<EventDto> addEvent(@RequestBody EventDto eventDto, @PathVariable ("userMail")String userMail) {
-        EventDto addEvent = eventService.createEvent(eventDto, userMail);
+        Individual individual = IndividualMapper.toIndividual(individualService.getIndividualById(userMail));
+
+        Organization organization = OrganizationMapper.toOrganization(organizationService.getOrganizationById(userMail));
+        EventDto addEvent;
+        if (individual == null) {
+
+            addEvent = eventService.createEvent(eventDto, organization);
+
+        } else {
+            addEvent = eventService.createEvent(eventDto, individual);
+        }
         return new ResponseEntity<>(addEvent, HttpStatus.CREATED);
     }
 

@@ -1,18 +1,24 @@
 package dev.razafindratelo.numPy.controller;
 
 import dev.razafindratelo.numPy.dtos.userDtos.IndividualDto;
-import dev.razafindratelo.numPy.services.userServices.IndividualService;
+import dev.razafindratelo.numPy.services.individualService.IndividualService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api")
 public class IndividualController {
 
     IndividualService individualService;
+
+    @Autowired
+    public IndividualController(IndividualService individualService) {
+        this.individualService = individualService;
+    }
 
     @GetMapping("/individual")
     public ResponseEntity<List<IndividualDto>> getIndividuals() {
@@ -28,7 +34,7 @@ public class IndividualController {
 
     @PostMapping("/individual/authentication")
     public ResponseEntity<Boolean> loginUser(@RequestBody IndividualDto individualDto) {
-        Boolean check = individualService.checkUserLogin(individualDto);
+        Boolean check = individualService.checkIndividualUnique(individualDto);
         return (check) ? ResponseEntity.ok(true) : ResponseEntity.status(HttpStatus.FORBIDDEN).build();
     }
 

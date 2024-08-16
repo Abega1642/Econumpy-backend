@@ -1,17 +1,26 @@
 package dev.razafindratelo.numPy.services.postServices.postServicesImp;
 
 import dev.razafindratelo.numPy.Exceptions.ResourceNotFoundException;
+import dev.razafindratelo.numPy.dtos.postDtos.EventDto;
 import dev.razafindratelo.numPy.dtos.postDtos.OfferDto;
+import dev.razafindratelo.numPy.entity.post.Event;
 import dev.razafindratelo.numPy.entity.post.Offer;
 import dev.razafindratelo.numPy.entity.user.Individual;
+import dev.razafindratelo.numPy.entity.user.Organization;
+import dev.razafindratelo.numPy.entity.user.User;
+import dev.razafindratelo.numPy.mapper.postMapper.EventMapper;
 import dev.razafindratelo.numPy.mapper.postMapper.OfferMapper;
 import dev.razafindratelo.numPy.mapper.statusMapper.StatusMapper;
 import dev.razafindratelo.numPy.mapper.userMapper.individualMapper.IndividualMapper;
+import dev.razafindratelo.numPy.mapper.userMapper.organizationMapper.OrganizationMapper;
 import dev.razafindratelo.numPy.repositories.postRepository.PostRepository;
 import dev.razafindratelo.numPy.services.individualService.IndividualService;
 import dev.razafindratelo.numPy.services.individualService.individualImp.IndividualServiceImp;
+import dev.razafindratelo.numPy.services.organizationService.OrganizationService;
 import dev.razafindratelo.numPy.services.postServices.OfferService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -22,14 +31,13 @@ import java.util.List;
 public class OfferServiceImpl implements OfferService {
 
     PostRepository offerRepository;
+    IndividualService individualService;
+    OrganizationService organizationService;
 
     @Override
-    public OfferDto createOffer(OfferDto offerDto, String userEmail) {
-        IndividualService individualService = new IndividualServiceImp();
-        Individual individual = IndividualMapper.toIndividual(individualService.getIndividualById(userEmail));
-        Offer offer = OfferMapper.mapToPost(offerDto, individual);
-        offerRepository.save(offer);
-        return OfferMapper.mapToPostDto(offer);
+    public OfferDto createOffer(OfferDto offerDto, User user) {
+        Offer offerDto1 = offerRepository.save(OfferMapper.mapToPost(offerDto, user));
+        return OfferMapper.mapToPostDto(offerDto1);
     }
 
     @Override
