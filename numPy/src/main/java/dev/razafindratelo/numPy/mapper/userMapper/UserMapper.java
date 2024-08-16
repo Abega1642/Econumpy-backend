@@ -27,7 +27,7 @@ public class UserMapper {
                 user.getPhoneNumber(),
                 user.getUsername(),
                 user.getCommunityList().stream().map(CommunityMapper::mapToCommunity).toList(),
-                user.getPosts().stream().map(PostMapper::mapToPost),
+                user.getPosts().stream().map(PostMapper::mapToPost).toList(),
                 user.getScore()
         );
     }
