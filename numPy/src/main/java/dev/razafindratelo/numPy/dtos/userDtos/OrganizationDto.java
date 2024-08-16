@@ -2,12 +2,13 @@ package dev.razafindratelo.numPy.dtos.userDtos;
 
 import dev.razafindratelo.numPy.dtos.communityDtos.CommunityDto;
 import dev.razafindratelo.numPy.dtos.postDtos.PostDto;
-import lombok.Data;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 public class OrganizationDto extends UserDto {
     private String NIF;
     private String STAT;

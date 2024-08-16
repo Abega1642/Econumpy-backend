@@ -1,8 +1,6 @@
 package dev.razafindratelo.numPy.mapper.userMapper;
 
 import dev.razafindratelo.numPy.dtos.userDtos.OrganizationDto;
-import dev.razafindratelo.numPy.dtos.userDtos.OrganizationDto;
-import dev.razafindratelo.numPy.entity.user.Organization;
 import dev.razafindratelo.numPy.entity.user.Organization;
 import dev.razafindratelo.numPy.mapper.communityMapper.CommunityMapper;
 import dev.razafindratelo.numPy.mapper.postMapper.PostMapper;
@@ -19,12 +17,15 @@ public class OrganizationMapper {
                         .stream()
                         .map(CommunityMapper::mapToCommunityDto)
                         .toList(),
-                Organization.getPosts()
+                organization.getPosts()
                         .stream()
                         .map(PostMapper::mapToPostDto)
                         .toList(),
-                Organization.getScore(),
-                Organization.getBirthDate()
+                organization.getScore(),
+                organization.getNIF(),
+                organization.getSTAT(),
+                organization.getAccreditation(),
+                organization.getCreationDate()
         );
     }
 }
