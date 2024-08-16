@@ -1,20 +1,23 @@
 package dev.razafindratelo.numPy.services.individual.individualImp;
 
+import dev.razafindratelo.numPy.Exceptions.ResourceDuplicatedException;
 import dev.razafindratelo.numPy.dtos.userDtos.IndividualDto;
 import dev.razafindratelo.numPy.entity.user.Individual;
 import dev.razafindratelo.numPy.mapper.userMapper.individualMapper.IndividualMapper;
+import dev.razafindratelo.numPy.repositories.userRepository.UserRepository;
 import dev.razafindratelo.numPy.services.individual.IndividualService;
 
+import java.util.Collections;
 import java.util.List;
 
 public class IndividualServiceImp implements IndividualService {
 
-    IndividualRepository individualRepository;
+    UserRepository individualRepository;
 
     @Override
     public IndividualDto createIndividual(IndividualDto individualDto) {
         if(!checkIndividualUnique(individualDto)){
-            throw new Exception("");
+            throw new ResourceDuplicatedException("this user already exists");
         }
         Individual individual = individualRepository.save(IndividualMapper.toIndividual(individualDto));
 
@@ -23,7 +26,7 @@ public class IndividualServiceImp implements IndividualService {
 
     @Override
     public IndividualDto updateIndividual(String individualId, IndividualDto individualDto) throws Exception {
-        Individual individual = individualRepository.findById(individualId)
+        Individual individual = (Individual) individualRepository.findById(individualId)
                 .orElseThrow(()->
                     new Exception("")
                 );
@@ -54,7 +57,7 @@ public class IndividualServiceImp implements IndividualService {
     }
 
     private boolean checkIndividualUnique(IndividualDto individualDto) {
-        List<Individual> individualList = individualRepository.findAll();
+        List<Individual> individualList = Collections.singletonList((Individual) individualRepository.findAll());
         for(Individual i : individualList) {
             if (i.getEmail().equals(individualDto.getEmail())) {
                 return false;
