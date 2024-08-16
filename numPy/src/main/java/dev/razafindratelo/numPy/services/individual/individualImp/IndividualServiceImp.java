@@ -13,10 +13,12 @@ public class IndividualServiceImp implements IndividualService {
 
     @Override
     public IndividualDto createIndividual(IndividualDto individualDto) {
+        if(!checkIndividualUnique(individualDto)){
+            throw new Exception("");
+        }
+        Individual individual = individualRepository.save(IndividualMapper.toIndividual(individualDto));
 
-        Individual individual = individualRepository.save(IndividualMapper);
-
-        return null;
+        return IndividualMapper.toIndividualDto(individual);
     }
 
     @Override
