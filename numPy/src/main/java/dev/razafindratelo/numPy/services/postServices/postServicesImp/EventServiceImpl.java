@@ -2,9 +2,13 @@ package dev.razafindratelo.numPy.services.postServices.postServicesImp;
 
 import dev.razafindratelo.numPy.dtos.postDtos.EventDto;
 import dev.razafindratelo.numPy.services.postServices.EventService;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@AllArgsConstructor
+@Service
 public class EventServiceImpl implements EventService {
     @Override
     public EventDto createEvent(EventDto eventDto) {

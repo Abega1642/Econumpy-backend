@@ -2,9 +2,13 @@ package dev.razafindratelo.numPy.services.wishListService.wishListServiceImpl;
 
 import dev.razafindratelo.numPy.dtos.postDtos.WishListDto;
 import dev.razafindratelo.numPy.services.wishListService.WishListService;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@AllArgsConstructor
+@Service
 public class WishListIServiceImpl implements WishListService {
     @Override
     public WishListDto createWishList(WishListDto wishlistDto) {

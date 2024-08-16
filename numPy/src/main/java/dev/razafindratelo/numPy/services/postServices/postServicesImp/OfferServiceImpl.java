@@ -2,9 +2,13 @@ package dev.razafindratelo.numPy.services.postServices.postServicesImp;
 
 import dev.razafindratelo.numPy.dtos.postDtos.OfferDto;
 import dev.razafindratelo.numPy.services.postServices.OfferService;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@AllArgsConstructor
+@Service
 public class OfferServiceImpl implements OfferService {
     @Override
     public OfferDto createOffer(OfferDto offerDto) {

@@ -7,9 +7,11 @@ import dev.razafindratelo.numPy.entity.user.User;
 import dev.razafindratelo.numPy.mapper.userMapper.organizationMapper.OrganizationMapper;
 import dev.razafindratelo.numPy.repositories.userRepository.UserRepository;
 import dev.razafindratelo.numPy.services.organization.OrganizationService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class OrganizationServiceImpl implements OrganizationService {
 
     private UserRepository organizationRepository;

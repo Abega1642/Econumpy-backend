@@ -6,10 +6,15 @@ import dev.razafindratelo.numPy.entity.user.Individual;
 import dev.razafindratelo.numPy.mapper.userMapper.individualMapper.IndividualMapper;
 import dev.razafindratelo.numPy.repositories.userRepository.UserRepository;
 import dev.razafindratelo.numPy.services.individual.IndividualService;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
 
+
+@AllArgsConstructor
+@Service
 public class IndividualServiceImp implements IndividualService {
 
     UserRepository individualRepository;
