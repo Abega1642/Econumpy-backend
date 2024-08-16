@@ -16,17 +16,18 @@ import java.util.List;
 @Table(name = "community")
 public class Community {
     @Id
+    @Column(name = "community_name")
     private String name;
 
-    @Column
+    @Column(name = "community_description")
     private String description;
 
-    @Column
+    @Column(name = "community_domain")
     private Domain domain;
 
-    @Column
+    @Column(name = "creation_date")
     private LocalDate creationDate;
-    
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
+    @ManyToMany(mappedBy = "communities")
     private List<User> members;
 }

@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @DiscriminatorValue("REPORTING")
 public class Reporting extends Notification {
-    @Column(nullable = false)
+    @Column(name = "body", nullable = false)
     private String body;
 
     public Reporting(

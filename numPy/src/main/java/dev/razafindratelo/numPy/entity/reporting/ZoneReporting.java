@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@DiscriminatorValue("TARGETED")
+@DiscriminatorValue("ZONE")
 public class ZoneReporting extends Reporting{
     @ManyToMany
     @JoinTable(

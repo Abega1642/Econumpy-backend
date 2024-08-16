@@ -17,16 +17,16 @@ import java.util.List;
 @DiscriminatorValue("ORGANIZATION")
 public class Organization extends User {
 
-    @Column(unique = true, nullable = false)
+    @Column(name = "nif", nullable = false)
     private String NIF;
 
-    @Column(unique = true, nullable = false)
+    @Column(name = "stat", nullable = false)
     private String STAT;
 
-    @Column(unique = true, nullable = false)
+    @Column(name = "accreditation", nullable = false)
     private String accreditation;
 
-    @Column(nullable = false)
+    @Column(name = "creation_date",nullable = false)
     private LocalDate creationDate;
 
     public Organization(
@@ -35,10 +35,10 @@ public class Organization extends User {
             String address,
             String phoneNumber,
             String username,
-            List<Community> communityList,
+            List<Community> communities,
             List<Post> posts,
             long score
     ) {
-        super(email, password, address, phoneNumber, username, communityList, posts, score);
+        super(email, password, address, phoneNumber, username, communities, posts, score);
     }
 }

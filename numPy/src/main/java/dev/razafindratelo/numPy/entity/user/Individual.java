@@ -19,7 +19,7 @@ import java.util.List;
 @DiscriminatorValue("INDIVIDUAL")
 public class Individual extends User {
 
-    @Column(nullable = false)
+    @Column(name ="user_birthdate")
     private LocalDate birthDate;
 
     public Individual(
@@ -28,12 +28,12 @@ public class Individual extends User {
             String address,
             String phoneNumber,
             String username,
-            List<Community> communityList,
+            List<Community> communities,
             List<Post> posts,
             long score,
             LocalDate birthDate
     ) {
-        super(email, password, address, phoneNumber, username, communityList, posts, score);
+        super(email, password, address, phoneNumber, username, communities, posts, score);
         this.birthDate = birthDate;
     }
 }

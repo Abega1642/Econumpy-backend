@@ -12,32 +12,37 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "user_type", discriminatorType = DiscriminatorType.STRING)
 public abstract class User {
     @Id
     protected String email;
 
-    @Column
+    @Column(name = "password")
     protected String password;
 
-    @Column
+    @Column(name = "user_address")
     protected String address;
 
-    @Column
+    @Column(name = "phone_number")
     protected String phoneNumber;
 
-    @Column
+    @Column(name = "user_name")
     protected String username;
 
-    @OneToMany(mappedBy = "community", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    protected List<Community> communityList;
+    @ManyToMany
+    @JoinTable(
+            name = "user_community",
+            joinColumns = @JoinColumn(name = "user_email"),
+            inverseJoinColumns = @JoinColumn(name = "community_name")
+    )
+    protected List<Community> communities;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     protected List<Post> posts;
 
-    @Column
+    @Column(name = "user_score")
     protected long score;
 
     @Override

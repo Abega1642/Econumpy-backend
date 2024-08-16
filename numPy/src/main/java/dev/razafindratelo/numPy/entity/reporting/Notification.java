@@ -16,12 +16,12 @@ public abstract class Notification{
     @Id
     private String id;
 
-    @Column(nullable = false)
+    @Column(name = "title", nullable = false)
     private String title;
 
-    @Column(nullable = false)
+    @Column(name = "description", nullable = false)
     private String description;
 
-    @Column(nullable = false)
+    @Column(name = "post_level", nullable = false)
     private Level level;
 }

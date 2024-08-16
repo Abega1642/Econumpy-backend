@@ -1,5 +1,6 @@
 package dev.razafindratelo.numPy.entity.post;
 
+import dev.razafindratelo.numPy.entity.user.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
@@ -16,7 +17,7 @@ import java.time.LocalDate;
 @DiscriminatorValue("OFFER")
 public class Offer extends Post {
 
-    @Column(nullable = false)
+    @Column(name = "offer_status")
     private Status status;
 
     public Offer(String postId,
@@ -25,9 +26,10 @@ public class Offer extends Post {
                  long like,
                  long dislike,
                  LocalDate publishedDate,
-                 Status status
+                 Status status,
+                 User author
     ) {
-        super(postId, title, description, like, dislike, publishedDate);
+        super(postId, title, description, like, dislike, publishedDate, author);
         this.status = status;
     }
 }
