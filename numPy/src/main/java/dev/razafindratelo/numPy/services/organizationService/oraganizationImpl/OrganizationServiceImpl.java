@@ -1,4 +1,4 @@
-package dev.razafindratelo.numPy.services.organization.oraganizationImpl;
+package dev.razafindratelo.numPy.services.organizationService.oraganizationImpl;
 
 import dev.razafindratelo.numPy.Exceptions.ResourceDuplicatedException;
 import dev.razafindratelo.numPy.dtos.userDtos.OrganizationDto;
@@ -6,7 +6,7 @@ import dev.razafindratelo.numPy.entity.user.Organization;
 import dev.razafindratelo.numPy.entity.user.User;
 import dev.razafindratelo.numPy.mapper.userMapper.organizationMapper.OrganizationMapper;
 import dev.razafindratelo.numPy.repositories.userRepository.UserRepository;
-import dev.razafindratelo.numPy.services.organization.OrganizationService;
+import dev.razafindratelo.numPy.services.organizationService.OrganizationService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

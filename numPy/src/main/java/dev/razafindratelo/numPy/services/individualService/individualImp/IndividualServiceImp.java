@@ -1,11 +1,12 @@
-package dev.razafindratelo.numPy.services.individual.individualImp;
+package dev.razafindratelo.numPy.services.individualService.individualImp;
 
 import dev.razafindratelo.numPy.Exceptions.ResourceDuplicatedException;
+import dev.razafindratelo.numPy.Exceptions.ResourceNotFoundException;
 import dev.razafindratelo.numPy.dtos.userDtos.IndividualDto;
 import dev.razafindratelo.numPy.entity.user.Individual;
 import dev.razafindratelo.numPy.mapper.userMapper.individualMapper.IndividualMapper;
 import dev.razafindratelo.numPy.repositories.userRepository.UserRepository;
-import dev.razafindratelo.numPy.services.individual.IndividualService;
+import dev.razafindratelo.numPy.services.individualService.IndividualService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -30,10 +31,10 @@ public class IndividualServiceImp implements IndividualService {
     }
 
     @Override
-    public IndividualDto updateIndividual(String individualId, IndividualDto individualDto) throws Exception {
+    public IndividualDto updateIndividual(String individualId, IndividualDto individualDto) {
         Individual individual = (Individual) individualRepository.findById(individualId)
                 .orElseThrow(()->
-                    new Exception("")
+                    new ResourceNotFoundException("Individual with id " + individualId + " not found")
                 );
         individual.setUsername(individualDto.getUsername());
         individual.setEmail(individualDto.getEmail());
@@ -47,21 +48,25 @@ public class IndividualServiceImp implements IndividualService {
     }
 
     @Override
-    public IndividualDto getEventById(String id) {
-        return null;
+    public IndividualDto getIndividualById(String individualId) {
+        Individual individual = (Individual) individualRepository.findById(individualId).orElseThrow(
+                ()-> new ResourceNotFoundException("")
+        );
+        return IndividualMapper.toIndividualDto(individual);
     }
 
     @Override
-    public List<IndividualDto> getAllIndividual() {
+    public List<IndividualDto> getIndividuals() {
         return List.of();
     }
 
     @Override
-    public void deleteEventById(String individualId) {
-
+    public void deleteIndividualById(String individualId) {
+        individualRepository.deleteById(individualId);
     }
 
-    private boolean checkIndividualUnique(IndividualDto individualDto) {
+    @Override
+    public boolean checkIndividualUnique(IndividualDto individualDto) {
         List<Individual> individualList = Collections.singletonList((Individual) individualRepository.findAll());
         for(Individual i : individualList) {
             if (i.getEmail().equals(individualDto.getEmail())) {
@@ -70,4 +75,7 @@ public class IndividualServiceImp implements IndividualService {
         }
         return true;
     }
+
 }
+
+

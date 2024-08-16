@@ -1,4 +1,4 @@
-package dev.razafindratelo.numPy.services.organization;
+package dev.razafindratelo.numPy.services.organizationService;
 
 
 import dev.razafindratelo.numPy.dtos.userDtos.OrganizationDto;
