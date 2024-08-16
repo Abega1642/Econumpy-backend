@@ -76,7 +76,7 @@ public class IndividualServiceImp implements IndividualService {
 
     @Override
     public boolean checkIndividualUnique(IndividualDto individualDto) {
-        List<Individual> individualList = individualRepository.findAll().stream().map(user -> (Individual)user).toList();
+        List<Individual> individualList = individualRepository.findAll().stream().map(user -> (Individual) user).toList();
 
         for(Individual i : individualList) {
             if (i.getEmail().equals(individualDto.getEmail())) {
