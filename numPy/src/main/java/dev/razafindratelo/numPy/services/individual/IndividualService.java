@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IndividualService {
     IndividualDto createIndividual(IndividualDto individualDto);
-    IndividualDto updateIndividual(String individualId,IndividualDto individualDto);
+    IndividualDto updateIndividual(String individualId,IndividualDto individualDto) throws Exception;
     IndividualDto getEventById(String id);
     List<IndividualDto> getAllIndividual();
     void deleteEventById(String individualId);

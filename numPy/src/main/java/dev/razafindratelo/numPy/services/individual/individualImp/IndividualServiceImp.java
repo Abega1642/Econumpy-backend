@@ -2,9 +2,11 @@ package dev.razafindratelo.numPy.services.individual.individualImp;
 
 import dev.razafindratelo.numPy.dtos.userDtos.IndividualDto;
 import dev.razafindratelo.numPy.entity.user.Individual;
+import dev.razafindratelo.numPy.mapper.userMapper.individualMapper.IndividualMapper;
 import dev.razafindratelo.numPy.repositories.userRepository.IndividualRepository;
 import dev.razafindratelo.numPy.services.individual.IndividualService;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class IndividualServiceImp implements IndividualService {
@@ -13,14 +15,27 @@ public class IndividualServiceImp implements IndividualService {
 
     @Override
     public IndividualDto createIndividual(IndividualDto individualDto) {
-        Individual individual = individualRepository.save(individualDto);
+
+        Individual individual = individualRepository.save(IndividualMapper);
 
         return null;
     }
 
     @Override
-    public IndividualDto updateIndividual(String individualId, IndividualDto individualDto) {
-        return null;
+    public IndividualDto updateIndividual(String individualId, IndividualDto individualDto) throws Exception {
+        Individual individual = individualRepository.findById(individualId)
+                .orElseThrow(()->
+                    new Exception("")
+                );
+        individual.setUsername(individualDto.getUsername());
+        individual.setEmail(individualDto.getEmail());
+        individual.setBirthDate(individualDto.getBirthDate());
+        individual.setPhoneNumber(individualDto.getPhoneNumber());
+        individual.setAddress(individualDto.getAddress());
+        individual.setPassword(individualDto.getPassword());
+
+        Individual updateIndividual = individualRepository.save(individual);
+        return IndividualMapper.toIndividualDto(updateIndividual);
     }
 
     @Override
@@ -40,8 +55,8 @@ public class IndividualServiceImp implements IndividualService {
 
     private boolean checkIndividualUnique(IndividualDto individualDto) {
         List<Individual> individualList = individualRepository.findAll();
-        for(Individual u : individualList) {
-            if (u.getEmail().equals(individualDto)) {
+        for(Individual i : individualList) {
+            if (i.getEmail().equals(individualDto.getEmail())) {
                 return false;
             }
         }
