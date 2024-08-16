@@ -1,8 +1,6 @@
-package dev.razafindratelo.numPy.services.userServices;
+package dev.razafindratelo.numPy.services.postServices;
 
 import dev.razafindratelo.numPy.dtos.postDtos.OfferDto;
-import dev.razafindratelo.numPy.dtos.postDtos.WishListDto;
-import dev.razafindratelo.numPy.entity.post.Offer;
 
 import java.util.List;
 

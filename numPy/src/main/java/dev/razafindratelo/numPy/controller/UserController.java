@@ -1,7 +1,6 @@
 package dev.razafindratelo.numPy.controller;
 
 import dev.razafindratelo.numPy.dtos.userDtos.UserDto;
-import dev.razafindratelo.numPy.entity.user.User;
 import dev.razafindratelo.numPy.services.userServices.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

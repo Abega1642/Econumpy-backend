@@ -2,7 +2,7 @@ package dev.razafindratelo.numPy.controller;
 
 import dev.razafindratelo.numPy.dtos.postDtos.EventDto;
 import dev.razafindratelo.numPy.dtos.postDtos.PostDto;
-import dev.razafindratelo.numPy.services.userServices.EventService;
+import dev.razafindratelo.numPy.services.postServices.EventService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

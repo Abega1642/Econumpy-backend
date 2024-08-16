@@ -1,7 +1,7 @@
 package dev.razafindratelo.numPy.controller;
 
 import dev.razafindratelo.numPy.dtos.postDtos.WishListDto;
-import dev.razafindratelo.numPy.services.userServices.WishListService;
+import dev.razafindratelo.numPy.services.wishListService.WishListService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

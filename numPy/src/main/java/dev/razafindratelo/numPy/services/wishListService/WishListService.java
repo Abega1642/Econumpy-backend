@@ -1,7 +1,6 @@
-package dev.razafindratelo.numPy.services.userServices;
+package dev.razafindratelo.numPy.services.wishListService;
 
 import dev.razafindratelo.numPy.dtos.postDtos.WishListDto;
-import dev.razafindratelo.numPy.dtos.userDtos.UserDto;
 
 import java.util.List;
 
