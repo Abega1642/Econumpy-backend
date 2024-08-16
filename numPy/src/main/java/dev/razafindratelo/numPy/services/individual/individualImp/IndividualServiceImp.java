@@ -3,10 +3,8 @@ package dev.razafindratelo.numPy.services.individual.individualImp;
 import dev.razafindratelo.numPy.dtos.userDtos.IndividualDto;
 import dev.razafindratelo.numPy.entity.user.Individual;
 import dev.razafindratelo.numPy.mapper.userMapper.individualMapper.IndividualMapper;
-import dev.razafindratelo.numPy.repositories.userRepository.IndividualRepository;
 import dev.razafindratelo.numPy.services.individual.IndividualService;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public class IndividualServiceImp implements IndividualService {
