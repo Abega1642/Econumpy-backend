@@ -5,6 +5,8 @@ import dev.razafindratelo.numPy.Exceptions.ResourceNotFoundException;
 import dev.razafindratelo.numPy.dtos.userDtos.IndividualDto;
 import dev.razafindratelo.numPy.dtos.userDtos.Login;
 import dev.razafindratelo.numPy.entity.user.Individual;
+import dev.razafindratelo.numPy.entity.user.Organization;
+import dev.razafindratelo.numPy.entity.user.User;
 import dev.razafindratelo.numPy.mapper.userMapper.individualMapper.IndividualMapper;
 import dev.razafindratelo.numPy.repositories.userRepository.UserRepository;
 import dev.razafindratelo.numPy.services.individualService.IndividualService;
@@ -12,6 +14,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -62,7 +65,15 @@ public class IndividualServiceImp implements IndividualService {
 
     @Override
     public List<IndividualDto> getIndividuals() {
-        List<Individual> individualList = individualRepository.findAll().stream().map(user -> (Individual)user).toList();
+        List<User> users = individualRepository.findAll();
+
+        List<Individual> individualList = new ArrayList<>();
+
+        for (User user : users) {
+            if (user instanceof Individual) {
+                individualList.add((Individual) user);
+            }
+        }
 
         return individualList.stream()
                 .map(IndividualMapper::toIndividualDto)
@@ -76,10 +87,17 @@ public class IndividualServiceImp implements IndividualService {
 
     @Override
     public boolean checkIndividualUnique(IndividualDto individualDto) {
-        List<Individual> individualList = individualRepository.findAll().stream().map(user -> (Individual) user).toList();
+      List<User> users = individualRepository.findAll();
 
-        for(Individual i : individualList) {
-            if (i.getEmail().equals(individualDto.getEmail())) {
+        List<Individual> individualList = new ArrayList<>();
+
+        for (User user : users) {
+            if (user instanceof Individual) {
+                individualList.add((Individual) user);
+            }
+        }
+        for (Individual individual : individualList) {
+            if(individual.getEmail().equals(individualDto.getEmail())) {
                 return false;
             }
         }
@@ -88,9 +106,16 @@ public class IndividualServiceImp implements IndividualService {
 
     @Override
     public boolean loginUser(Login login) {
-        List<Individual> individualList = individualRepository.findAll().stream().map(user -> (Individual)user).toList();
-        for(Individual i : individualList) {
-            if (i.getEmail().equals(login.email()) && i.getPassword().equals(login.password())) {
+        List<User> users = individualRepository.findAll();
+        List<Individual> individualList = new ArrayList<>();
+        for (User user : users) {
+            if (user instanceof Individual) {
+                individualList.add((Individual) user);
+            }
+        }
+        for (Individual individual : individualList) {
+            if(individual.getEmail().equals(login.email())
+            && individual.getPassword().equals(login.password())) {
                 return true;
             }
         }

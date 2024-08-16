@@ -14,6 +14,7 @@ import dev.razafindratelo.numPy.services.organizationService.OrganizationService
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -59,8 +60,16 @@ public class OrganizationServiceImpl implements OrganizationService {
 
     @Override
     public List<OrganizationDto> getAllOrganization() {
-        List<Organization> organizationList = organizationRepository.findAll().stream().map(user -> (Organization)user).toList();
-        return organizationList.stream()
+        List<User> users = organizationRepository.findAll();
+
+        List<Organization> organizations = new ArrayList<>();
+
+        for (User user : users) {
+            if (user instanceof Organization) {
+                organizations.add((Organization) user);
+            }
+        }
+        return organizations.stream()
                 .map(OrganizationMapper::toOrganizationDto)
                 .toList();
     }
@@ -72,9 +81,17 @@ public class OrganizationServiceImpl implements OrganizationService {
 
     @Override
     public boolean loginUser(Login login) {
-        List<Organization> organizations = organizationRepository.findAll().stream().map(user -> (Organization)user).toList();
-        for(Organization i : organizations) {
-            if (i.getEmail().equals(login.email()) && i.getPassword().equals(login.password())) {
+        List<User> users = organizationRepository.findAll();
+
+        List<Organization> organization = new ArrayList<>();
+        for (User user : users) {
+            if (user instanceof Individual) {
+                organization.add((Organization) user);
+            }
+        }
+        for (Organization org : organization) {
+            if(org.getEmail().equals(login.email())
+                    && org.getPassword().equals(login.password())) {
                 return true;
             }
         }
@@ -82,14 +99,20 @@ public class OrganizationServiceImpl implements OrganizationService {
     }
     @Override
     public boolean checkOrganizationUnique(OrganizationDto organizationDto) {
-//        System.out.println(organizationDto.getEmail());
-//        List<Organization> organizations = organizationRepository.findAll().stream().map(user -> (Organization) user).toList();
-//
-//        for(Organization i : organizations) {
-//            if (i.getEmail().equals(organizationDto.getEmail())) {
-//                return false;
-//            }
-//        }
+        List<User> users = organizationRepository.findAll();
+
+        List<Organization> organizationList = new ArrayList<>();
+
+        for (User user : users) {
+            if (user instanceof Organization) {
+                organizationList.add((Organization) user);
+            }
+        }
+        for (Organization organization : organizationList) {
+            if(organization.getEmail().equals(organizationDto.getEmail())) {
+                return false;
+            }
+        }
         return true;
     }
 }
