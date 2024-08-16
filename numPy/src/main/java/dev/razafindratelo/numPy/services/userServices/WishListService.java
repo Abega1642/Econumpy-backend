@@ -6,9 +6,9 @@ import dev.razafindratelo.numPy.dtos.userDtos.UserDto;
 import java.util.List;
 
 public interface WishListService {
-    WishListDto createUser(UserDto userDto);
-    WishListDto updateUser(String userId,UserDto userDto);
-    WishListDto getUserById(String id);
-    List<WishListDto> getAllUsers();
+    WishListDto createWishList(WishListDto wishlistDto);
+    WishListDto updateWishList(String wishlistId,WishListDto wishlistDto);
+    WishListDto getWishListById(String id);
+    List<WishListDto> getWishLists();
     void deleteWishList(String id);
 }
