@@ -10,8 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-public class IndividualController {
-
+public class OrganizationController {
     private IndividualService individualService;
 
     @GetMapping("/individual")
@@ -49,5 +48,4 @@ public class IndividualController {
         individualService.deleteIndividualById(id);
         return "individual deleted with success !";
     }
-
 }
