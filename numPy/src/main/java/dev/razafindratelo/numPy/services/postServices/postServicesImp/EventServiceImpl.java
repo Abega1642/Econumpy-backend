@@ -21,6 +21,7 @@ import dev.razafindratelo.numPy.services.postServices.EventService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -64,12 +65,16 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public List<EventDto> getAllEvents() {
-        List<Event> userList = postRepository.findAll()
-                .stream()
-                .map(post -> (Event) post)
-                .toList();
+        List<Post> posts = postRepository.findAll();
 
-        return userList.stream()
+        List<Event> eventList = new ArrayList<>();
+
+        for (Post event : posts) {
+            if (event instanceof Event) {
+                eventList.add((Event) event);
+            }
+        }
+        return eventList.stream()
                 .map(EventMapper::mapToPostDto)
                 .toList();
     }

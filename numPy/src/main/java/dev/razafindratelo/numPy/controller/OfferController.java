@@ -25,7 +25,7 @@ public class OfferController {
     OrganizationService organizationService;
 
     @GetMapping("/offer")
-    public ResponseEntity<List<OfferDto>> getWishList() {
+    public ResponseEntity<List<OfferDto>> getAllOffers() {
         List<OfferDto> offerDtoList = offerService.getOffers();
         return ResponseEntity.ok(offerDtoList);
     }

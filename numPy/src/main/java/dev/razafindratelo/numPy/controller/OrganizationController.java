@@ -25,7 +25,7 @@ public class OrganizationController {
     }
 
     @GetMapping("/organization")
-    public ResponseEntity<List<OrganizationDto>> getIndividuals() {
+    public ResponseEntity<List<OrganizationDto>> getAllOrganizations() {
         List<OrganizationDto> or = organizationService.getAllOrganization();
         return ResponseEntity.ok(or);
     }
