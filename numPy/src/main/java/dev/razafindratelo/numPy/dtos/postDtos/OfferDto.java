@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class OfferDto extends PostDto {
-    private String status;
+    private Status status;
 
     public OfferDto(
             String postId,
@@ -21,7 +21,7 @@ public class OfferDto extends PostDto {
             long dislike,
             LocalDate publishedDate,
             String authorEmail,
-            String status
+            Status status
     ) {
         super(postId, title, description, like, dislike, publishedDate, authorEmail);
         this.status = status;

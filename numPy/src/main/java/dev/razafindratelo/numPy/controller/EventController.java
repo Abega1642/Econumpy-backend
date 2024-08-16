@@ -27,9 +27,9 @@ public class EventController {
         return ResponseEntity.ok(eventDto);
     }
 
-    @PostMapping("/event/add")
-    public ResponseEntity<EventDto> addEvent(@RequestBody EventDto eventDto) {
-        EventDto addEvent = eventService.createEvent(eventDto);
+    @PostMapping("/event/add/{userMail}")
+    public ResponseEntity<EventDto> addEvent(@RequestBody EventDto eventDto, @PathVariable ("userMail")String userMail) {
+        EventDto addEvent = eventService.createEvent(eventDto, userMail);
         return new ResponseEntity<>(addEvent, HttpStatus.CREATED);
     }
 

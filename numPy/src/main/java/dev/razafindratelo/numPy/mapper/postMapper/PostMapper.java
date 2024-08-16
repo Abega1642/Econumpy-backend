@@ -2,6 +2,7 @@ package dev.razafindratelo.numPy.mapper.postMapper;
 
 import dev.razafindratelo.numPy.dtos.postDtos.PostDto;
 import dev.razafindratelo.numPy.entity.post.Post;
+import dev.razafindratelo.numPy.entity.user.User;
 import dev.razafindratelo.numPy.mapper.userMapper.UserMapper;
 
 public class PostMapper {
@@ -13,11 +14,11 @@ public class PostMapper {
                 post.getNumberOfLike(),
                 post.getNumberOfDislike(),
                 post.getPublishedDate(),
-                UserMapper.MapUserToUserDto(post.getAuthor())
+                post.getAuthor().getEmail()
         );
     }
 
-    public static Post mapToPost(PostDto post) {
+    public static Post mapToPost(PostDto post, User user) {
         return new Post(
                 post.getPostId(),
                 post.getTitle(),
@@ -25,7 +26,7 @@ public class PostMapper {
                 post.getLike(),
                 post.getDislike(),
                 post.getPublishedDate(),
-                UserMapper.MapUserToUser(post.getAuthor())
+                user
         );
     }
 }

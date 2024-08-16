@@ -3,6 +3,7 @@ package dev.razafindratelo.numPy.mapper.postMapper;
 import dev.razafindratelo.numPy.dtos.postDtos.EventDto;
 import dev.razafindratelo.numPy.entity.post.Event;
 import dev.razafindratelo.numPy.entity.post.Status;
+import dev.razafindratelo.numPy.entity.user.User;
 import dev.razafindratelo.numPy.mapper.statusMapper.StatusMapper;
 import dev.razafindratelo.numPy.mapper.userMapper.UserMapper;
 
@@ -20,7 +21,7 @@ public class EventMapper {
                 StatusMapper.statusMapper1(post.getStatus())
         );
     }
-    public static Event mapToEvent(EventDto eventDto) {
+    public static Event mapToEvent(EventDto eventDto, User user) {
         return new Event(
                 eventDto.getPostId(),
                 eventDto.getTitle(),
@@ -28,7 +29,7 @@ public class EventMapper {
                 eventDto.getLike(),
                 eventDto.getDislike(),
                 eventDto.getPublishedDate(),
-                UserMapper.MapUserToUser(eventDto.getAuthor()),
+                user,
                 StatusMapper.statusMapper2(eventDto.getStatus())
         );
     }

@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public class OrganizationServiceImpl implements OrganizationService {
 
-    private UserRepository organizationRepository;
+    private static UserRepository organizationRepository;
 
     @Override
     public OrganizationDto createOrganization(OrganizationDto organizationDto) {
