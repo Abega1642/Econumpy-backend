@@ -1,5 +1,7 @@
 package dev.razafindratelo.numPy.dtos.postDtos;
 
+import dev.razafindratelo.numPy.dtos.userDtos.UserDto;
+import dev.razafindratelo.numPy.entity.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,5 +18,6 @@ public class PostDto {
     private long like;
     private long dislike;
     private LocalDate publishedDate;
+    private UserDto author;
 }
 

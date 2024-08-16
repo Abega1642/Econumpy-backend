@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Table(name = "post")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "post_type", discriminatorType = DiscriminatorType.STRING)
-public abstract class Post {
+public class Post {
 
     @Id
     private String postId;

@@ -13,4 +13,13 @@ public class CommunityMapper {
                 community.getMembers()
         );
     }
+    public static Community mapToCommunity(CommunityDto community) {
+        return new Community(
+                community.getName(),
+                community.getDescription(),
+                community.getDomain(),
+                community.getCreationDate(),
+                community.getMembers()
+        );
+    }
 }

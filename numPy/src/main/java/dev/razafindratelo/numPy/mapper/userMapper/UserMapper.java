@@ -19,4 +19,17 @@ public class UserMapper {
                 user.getScore()
         );
     }
+    public static User MapUserToUser(UserDto user) {
+        return new User(
+                user.getEmail(),
+                user.getPassword(),
+                user.getAddress(),
+                user.getPhoneNumber(),
+                user.getUsername(),
+                user.getCommunityList().stream().map(CommunityMapper::mapToCommunity).toList(),
+                user.getPosts().stream().map(PostMapper::mapToPost),
+                user.getScore()
+        );
+    }
+
 }

@@ -24,7 +24,8 @@ public class Event extends Post{
             String postId,
             String title,
             String description,
-            long like, long dislike,
+            long like,
+            long dislike,
             LocalDate publishedDate,
             User author,
             Status status
