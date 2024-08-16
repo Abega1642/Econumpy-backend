@@ -25,4 +25,24 @@ public class IndividualMapper {
                 individual.getBirthDate()
         );
     }
+
+    public static Individual toIndividual(IndividualDto individual) {
+        return new Individual(
+                individual.getEmail(),
+                individual.getPassword(),
+                individual.getAddress(),
+                individual.getPhoneNumber(),
+                individual.getUsername(),
+                individual.getCommunityList()
+                        .stream()
+                        .map(CommunityMapper::mapToCommunity)
+                        .toList(),
+                individual.getPosts()
+                        .stream()
+                        .map(PostMapper::mapToPost)
+                        .toList(),
+                individual.getScore(),
+                individual.getBirthDate()
+        );
+    }
 }
