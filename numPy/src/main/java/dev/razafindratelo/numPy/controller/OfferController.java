@@ -20,14 +20,14 @@ public class OfferController {
     }
 
     @GetMapping("/offer/{eventId}")
-    public ResponseEntity<OfferDto> getEvent(@PathVariable String offerId) {
+    public ResponseEntity<OfferDto> getEvent(@PathVariable("eventId") String offerId) {
         OfferDto offerById = offerService.getOfferById(offerId);
         return ResponseEntity.ok(offerById);
     }
 
-    @PostMapping("/offer/add")
-    public ResponseEntity<OfferDto> addOffer(@RequestBody OfferDto offerDto) {
-        OfferDto addOffer = offerService.createOffer(offerDto);
+    @PostMapping("/offer/add/{userEmail}")
+    public ResponseEntity<OfferDto> addOffer(@RequestBody OfferDto offerDto, @PathVariable("userEmail") String userEmail ) {
+        OfferDto addOffer = offerService.createOffer(offerDto, userEmail);
         return new ResponseEntity<>(addOffer, HttpStatus.CREATED);
     }
 
