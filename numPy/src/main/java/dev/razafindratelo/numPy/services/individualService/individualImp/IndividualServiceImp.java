@@ -57,7 +57,11 @@ public class IndividualServiceImp implements IndividualService {
 
     @Override
     public List<IndividualDto> getIndividuals() {
-        return List.of();
+        List<Individual> individualList = Collections.singletonList((Individual) individualRepository.findAll());
+
+        return individualList.stream()
+                .map(IndividualMapper::toIndividualDto)
+                .toList();
     }
 
     @Override
