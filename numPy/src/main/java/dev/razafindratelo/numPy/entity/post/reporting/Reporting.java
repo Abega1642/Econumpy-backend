@@ -1,7 +1,19 @@
 package dev.razafindratelo.numPy.entity.post.reporting;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-public class Reporting extends Notification{
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@DiscriminatorValue("REPORTING")
+public class Reporting extends Notification {
+    @Column(nullable = false)
     private String body;
 
     public Reporting(
