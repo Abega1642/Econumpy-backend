@@ -1,6 +1,7 @@
 package dev.razafindratelo.numPy.controller;
 
 import dev.razafindratelo.numPy.dtos.userDtos.IndividualDto;
+import dev.razafindratelo.numPy.dtos.userDtos.Login;
 import dev.razafindratelo.numPy.services.individualService.IndividualService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,8 +34,8 @@ public class IndividualController {
     }
 
     @PostMapping("/individual/authentication")
-    public ResponseEntity<Boolean> loginUser(@RequestBody IndividualDto individualDto) {
-        Boolean check = individualService.checkIndividualUnique(individualDto);
+    public ResponseEntity<Boolean> loginUser(@RequestBody Login login) {
+        Boolean check = individualService.loginUser(login);
         return (check) ? ResponseEntity.ok(true) : ResponseEntity.status(HttpStatus.FORBIDDEN).build();
     }
 
@@ -44,7 +45,7 @@ public class IndividualController {
         return new ResponseEntity<>(addUser, HttpStatus.CREATED);
     }
 
-    @PutMapping("/individual/update/{individualId}")
+    @PatchMapping("/individual/update/{individualId}")
     public ResponseEntity<IndividualDto> updateUser(@PathVariable("individualId") String individualId, @RequestBody IndividualDto individualDto) {
         IndividualDto updateUser = individualService.updateIndividual(individualId, individualDto);
         return new ResponseEntity<>(updateUser, HttpStatus.OK);

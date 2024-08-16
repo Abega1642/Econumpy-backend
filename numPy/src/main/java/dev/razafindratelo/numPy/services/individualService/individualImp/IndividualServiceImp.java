@@ -3,6 +3,7 @@ package dev.razafindratelo.numPy.services.individualService.individualImp;
 import dev.razafindratelo.numPy.Exceptions.ResourceDuplicatedException;
 import dev.razafindratelo.numPy.Exceptions.ResourceNotFoundException;
 import dev.razafindratelo.numPy.dtos.userDtos.IndividualDto;
+import dev.razafindratelo.numPy.dtos.userDtos.Login;
 import dev.razafindratelo.numPy.entity.user.Individual;
 import dev.razafindratelo.numPy.mapper.userMapper.individualMapper.IndividualMapper;
 import dev.razafindratelo.numPy.repositories.userRepository.UserRepository;
@@ -38,12 +39,14 @@ public class IndividualServiceImp implements IndividualService {
                 .orElseThrow(()->
                     new ResourceNotFoundException("Individual with id " + individualId + " not found")
                 );
+        System.out.println(individual.getAddress() + " " + individual.getUsername() + " " + individual.getEmail());
         individual.setUsername(individualDto.getUsername());
         individual.setEmail(individualDto.getEmail());
         individual.setBirthDate(individualDto.getBirthDate());
         individual.setPhoneNumber(individualDto.getPhoneNumber());
         individual.setAddress(individualDto.getAddress());
         individual.setPassword(individualDto.getPassword());
+        individual.setScore(individualDto.getScore());
 
         Individual updateIndividual = individualRepository.save(individual);
         return IndividualMapper.toIndividualDto(updateIndividual);
@@ -74,13 +77,24 @@ public class IndividualServiceImp implements IndividualService {
     @Override
     public boolean checkIndividualUnique(IndividualDto individualDto) {
         List<Individual> individualList = individualRepository.findAll().stream().map(user -> (Individual)user).toList();
-        System.out.println(individualDto.toString());
+
         for(Individual i : individualList) {
             if (i.getEmail().equals(individualDto.getEmail())) {
                 return false;
             }
         }
         return true;
+    }
+
+    @Override
+    public boolean loginUser(Login login) {
+        List<Individual> individualList = individualRepository.findAll().stream().map(user -> (Individual)user).toList();
+        for(Individual i : individualList) {
+            if (i.getEmail().equals(login.email()) && i.getPassword().equals(login.password())) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
