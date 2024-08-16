@@ -29,7 +29,7 @@ public class OrganizationMapper {
         );
     }
 
-    public static Organization toOrganizationDto(OrganizationDto organization) {
+    public static Organization toOrganization(OrganizationDto organization) {
         return new Organization(
                 organization.getEmail(),
                 organization.getPassword(),
