@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping("/api")
 public class IndividualController {
 
-    private IndividualService individualService;
+    IndividualService individualService;
 
     @GetMapping("/individual")
     public ResponseEntity<List<IndividualDto>> getIndividuals() {

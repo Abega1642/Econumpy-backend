@@ -1,9 +1,13 @@
 package dev.razafindratelo.numPy.mapper.userMapper.organizationMapper;
 
 import dev.razafindratelo.numPy.dtos.userDtos.OrganizationDto;
+import dev.razafindratelo.numPy.entity.post.Post;
 import dev.razafindratelo.numPy.entity.user.Organization;
 import dev.razafindratelo.numPy.mapper.communityMapper.CommunityMapper;
 import dev.razafindratelo.numPy.mapper.postMapper.PostMapper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class OrganizationMapper {
     public static OrganizationDto toOrganizationDto(Organization organization) {
@@ -13,14 +17,6 @@ public class OrganizationMapper {
                 organization.getAddress(),
                 organization.getPhoneNumber(),
                 organization.getUsername(),
-                organization.getCommunities()
-                        .stream()
-                        .map(CommunityMapper::mapToCommunityDto)
-                        .toList(),
-                organization.getPosts()
-                        .stream()
-                        .map(PostMapper::mapToPostDto)
-                        .toList(),
                 organization.getScore(),
                 organization.getNIF(),
                 organization.getSTAT(),
@@ -30,7 +26,7 @@ public class OrganizationMapper {
     }
 
     public static Organization toOrganization(OrganizationDto organization) {
-        return new Organization(
+        Organization organization1 = new Organization(
                 organization.getEmail(),
                 organization.getPassword(),
                 organization.getAddress(),
@@ -40,15 +36,20 @@ public class OrganizationMapper {
                         .stream()
                         .map(CommunityMapper::mapToCommunity)
                         .toList(),
-                organization.getPosts()
-                        .stream()
-                        .map(PostMapper::mapToPost)
-                        .toList(),
+                new ArrayList<>(),
                 organization.getScore(),
                 organization.getNIF(),
                 organization.getSTAT(),
                 organization.getAccreditation(),
                 organization.getCreationDate()
         );
+
+        List<Post> posts = organization.getPosts()
+                .stream()
+                .map(postDto -> PostMapper.mapToPost(postDto, organization1))
+                .toList();
+        organization1.setPosts(posts);
+
+        return organization1;
     }
 }

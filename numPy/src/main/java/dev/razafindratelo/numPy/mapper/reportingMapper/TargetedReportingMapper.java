@@ -22,7 +22,7 @@ public class TargetedReportingMapper {
                 targetedReporting.getTitle(),
                 targetedReporting.getDescription(),
                 targetedReporting.getLevel(),
-                UserMapper.MapUserToUserDto(targetedReporting.getAddressee()),
+                UserMapper.mapUserToUserDto(targetedReporting.getAddressee()),
                 targetedReporting.getBody()
         );
     }

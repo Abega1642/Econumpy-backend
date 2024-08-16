@@ -23,7 +23,7 @@ public class OfferMapper {
                 post.getNumberOfDislike(),
                 post.getPublishedDate(),
                 post.getAuthor().getEmail(),
-                StatusMapper.statusMapper1(post.getStatus())
+                post.getStatus()
         );
     }
     public static Offer mapToPost(OfferDto offerDto, User user) {
@@ -34,7 +34,7 @@ public class OfferMapper {
                 offerDto.getLike(),
                 offerDto.getDislike(),
                 offerDto.getPublishedDate(),
-                StatusMapper.statusMapper2(offerDto.getStatus()),
+                offerDto.getStatus(),
                 user
                 );
     }

@@ -38,7 +38,7 @@ public class OfferServiceImpl implements OfferService {
                 .orElseThrow(()->
                         new ResourceNotFoundException("Individual with id " + offerId + " not found")
                 );
-        offer.setStatus(StatusMapper.statusMapper2(offerDto.getStatus()));
+        offer.setStatus(offerDto.getStatus());
         offer.setTitle(offerDto.getTitle());
         offer.setDescription(offerDto.getDescription());
 

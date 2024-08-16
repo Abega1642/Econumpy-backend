@@ -6,7 +6,7 @@ public enum Status {
     CANCELED("CANCELED"),
     WAITING("WAITING"),
     FORBIDDEN("FORBIDDEN"),
-    CONFIRMED("CONFIRMED")
+    CONFIRMED("CONFIRMED");
 
     private final String displayName;
 

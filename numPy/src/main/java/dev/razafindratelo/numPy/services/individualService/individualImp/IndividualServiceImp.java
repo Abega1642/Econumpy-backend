@@ -18,7 +18,7 @@ import java.util.List;
 @Service
 public class IndividualServiceImp implements IndividualService {
 
-    public static UserRepository individualRepository;
+    static UserRepository individualRepository;
 
     @Override
     public IndividualDto createIndividual(IndividualDto individualDto) {

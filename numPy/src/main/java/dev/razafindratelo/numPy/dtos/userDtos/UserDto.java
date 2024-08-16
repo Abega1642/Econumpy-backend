@@ -5,11 +5,12 @@ import dev.razafindratelo.numPy.dtos.postDtos.PostDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Setter
-@AllArgsConstructor
 public class UserDto {
     protected String email;
     protected String password;
@@ -19,4 +20,15 @@ public class UserDto {
     protected List<CommunityDto> communityList;
     protected List<PostDto> posts;
     protected long score;
+
+    public UserDto(String email, String password, String address, String phoneNumber, String username, long score) {
+        this.email = email;
+        this.password = password;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.username = username;
+        this.communityList = new ArrayList<>();
+        this.posts = new ArrayList<>();
+        this.score = score;
+    }
 }

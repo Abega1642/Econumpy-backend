@@ -24,7 +24,7 @@ public class IndividualDto extends UserDto {
             long score,
             LocalDate birthDate
     ) {
-        super(email, password, address, phoneNumber, username, communityList, posts, score);
+        super(email, password, address, phoneNumber, username, score);
         this.birthDate = birthDate;
     }
 }

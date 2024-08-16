@@ -21,15 +21,13 @@ public class OrganizationDto extends UserDto {
             String address,
             String phoneNumber,
             String username,
-            List<CommunityDto> communityList,
-            List<PostDto> posts,
             long score,
             String nif,
             String stat,
             String accreditation,
             LocalDate creationDate
     ) {
-        super(email, password, address, phoneNumber, username, communityList, posts, score);
+        super(email, password, address, phoneNumber, username, score);
         this.NIF = nif;
         this.STAT = stat;
         this.accreditation = accreditation;
