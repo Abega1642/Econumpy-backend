@@ -28,4 +28,27 @@ public class OrganizationMapper {
                 organization.getCreationDate()
         );
     }
+
+    public static Organization toOrganizationDto(OrganizationDto organization) {
+        return new Organization(
+                organization.getEmail(),
+                organization.getPassword(),
+                organization.getAddress(),
+                organization.getPhoneNumber(),
+                organization.getUsername(),
+                organization.getCommunityList()
+                        .stream()
+                        .map(CommunityMapper::mapToCommunity)
+                        .toList(),
+                organization.getPosts()
+                        .stream()
+                        .map(PostMapper::mapToPost)
+                        .toList(),
+                organization.getScore(),
+                organization.getNIF(),
+                organization.getSTAT(),
+                organization.getAccreditation(),
+                organization.getCreationDate()
+        );
+    }
 }

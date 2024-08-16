@@ -37,8 +37,17 @@ public class Organization extends User {
             String username,
             List<Community> communities,
             List<Post> posts,
-            long score
+            long score,
+            String NIF,
+            String STAT,
+            String accreditation,
+            LocalDate creationDate
     ) {
         super(email, password, address, phoneNumber, username, communities, posts, score);
+        this.NIF = NIF;
+        this.STAT = STAT;
+        this.accreditation = accreditation;
+        this.creationDate = creationDate;
+
     }
 }
