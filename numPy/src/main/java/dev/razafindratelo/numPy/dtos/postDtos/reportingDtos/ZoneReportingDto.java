@@ -1,4 +1,4 @@
 package dev.razafindratelo.numPy.dtos.postDtos.reportingDtos;
 
-public class CommunityReportingDto {
+public class ZoneReportingDto {
 }

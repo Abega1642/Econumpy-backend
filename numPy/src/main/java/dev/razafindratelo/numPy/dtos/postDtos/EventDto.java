@@ -1,4 +1,7 @@
 package dev.razafindratelo.numPy.dtos.postDtos;
 
-public class EventDto {
+import dev.razafindratelo.numPy.entity.post.Status;
+
+public class EventDto extends PostDto{
+    private Status status;
 }

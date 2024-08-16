@@ -2,17 +2,19 @@ package dev.razafindratelo.numPy.entity.post.reporting;
 
 import dev.razafindratelo.numPy.entity.user.User;
 
-public class TargetedReporting extends Notification{
-    private User addressee;
+import java.util.ArrayList;
+import java.util.List;
 
-    public TargetedReporting(
+public class ZoneReporting extends Notification {
+    private List<User> users;
+
+    public ZoneReporting(
             String id,
             String title,
             String description,
-            Level level,
-            User addressee
+            Level level
     ) {
         super(id, title, description, level);
-        this.addressee = addressee;
+        this.users = new ArrayList<>();
     }
 }

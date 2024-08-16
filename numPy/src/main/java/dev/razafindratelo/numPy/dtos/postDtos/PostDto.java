@@ -1,9 +1,14 @@
 package dev.razafindratelo.numPy.dtos.postDtos;
 
-import jakarta.persistence.Column;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
+@Getter
+@Setter
+@AllArgsConstructor
 public class PostDto {
     private String postId;
     private String title;
