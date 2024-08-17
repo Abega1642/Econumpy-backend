@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -33,6 +34,9 @@ public class OrganizationController {
     @GetMapping("/organization/{organization}")
     public ResponseEntity<OrganizationDto> getUser(@PathVariable("organization") String individualId) {
         OrganizationDto individualDto = organizationService.getOrganizationById(individualId);
+        if(individualDto == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
         return ResponseEntity.ok(individualDto);
     }
 
