@@ -1,10 +1,7 @@
 package dev.razafindratelo.numPy.controller;
 
-import dev.razafindratelo.numPy.dtos.userDtos.IndividualDto;
 import dev.razafindratelo.numPy.dtos.userDtos.Login;
 import dev.razafindratelo.numPy.dtos.userDtos.OrganizationDto;
-import dev.razafindratelo.numPy.entity.user.Organization;
-import dev.razafindratelo.numPy.services.individualService.IndividualService;
 import dev.razafindratelo.numPy.services.organizationService.OrganizationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

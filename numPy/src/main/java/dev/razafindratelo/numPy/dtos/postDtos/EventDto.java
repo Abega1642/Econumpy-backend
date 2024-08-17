@@ -1,8 +1,5 @@
 package dev.razafindratelo.numPy.dtos.postDtos;
 
-import dev.razafindratelo.numPy.dtos.userDtos.UserDto;
-import dev.razafindratelo.numPy.entity.post.Status;
-import dev.razafindratelo.numPy.entity.user.User;
 import lombok.Getter;
 import lombok.Setter;
 
