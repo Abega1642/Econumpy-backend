@@ -91,7 +91,7 @@ public class OrganizationServiceImpl implements OrganizationService {
 
         List<Organization> organization = new ArrayList<>();
         for (User user : users) {
-            if (user instanceof Individual) {
+            if (user instanceof Organization) {
                 organization.add((Organization) user);
             }
         }
