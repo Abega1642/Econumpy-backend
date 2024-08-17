@@ -1,11 +1,7 @@
 package dev.razafindratelo.numPy.dtos.userDtos;
 
-import dev.razafindratelo.numPy.dtos.communityDtos.CommunityDto;
-import dev.razafindratelo.numPy.dtos.postDtos.PostDto;
 import lombok.*;
-
 import java.time.LocalDate;
-import java.util.List;
 
 @Getter
 @Setter
@@ -21,13 +17,12 @@ public class OrganizationDto extends UserDto {
             String address,
             String phoneNumber,
             String username,
-            long score,
             String nif,
             String stat,
             String accreditation,
             LocalDate creationDate
     ) {
-        super(email, password, address, phoneNumber, username, score);
+        super(email, password, address, phoneNumber, username);
         this.NIF = nif;
         this.STAT = stat;
         this.accreditation = accreditation;

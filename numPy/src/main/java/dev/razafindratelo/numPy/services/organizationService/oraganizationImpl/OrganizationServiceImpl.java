@@ -52,10 +52,16 @@ public class OrganizationServiceImpl implements OrganizationService {
 
     @Override
     public OrganizationDto getOrganizationById(String id) {
-        Organization organization = (Organization) organizationRepository.findById(id).orElseThrow(
-                ()-> new ResourceNotFoundException("Individual with " + id + " not found")
-        );
-        return OrganizationMapper.toOrganizationDto(organization);
+        User user = organizationRepository.findById(id)
+                .orElse(null);
+        if(user == null || user instanceof Individual){
+//            throw new ResourceNotFoundException("Individual with id " + id + " not found");
+            return null;
+        } else if (user instanceof Organization){
+            Organization organization = (Organization) user;
+            return OrganizationMapper.toOrganizationDto(organization);
+        }
+        return null;
     }
 
     @Override

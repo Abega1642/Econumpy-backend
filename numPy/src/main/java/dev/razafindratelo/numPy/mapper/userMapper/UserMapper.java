@@ -24,10 +24,7 @@ public class UserMapper {
                     individual.getAddress(),
                     individual.getPhoneNumber(),
                     individual.getUsername(),
-                    individual.getCommunities().stream().map(CommunityMapper::mapToCommunityDto).toList(),
-                    individual.getPosts().stream().map(PostMapper::mapToPostDto).toList(),
-                    individual.getScore(),
-                    individual.getBirthDate()  // Specific to Individual
+                    individual.getBirthDate()
             );
         } else if (user instanceof Organization) {
             Organization organization = (Organization) user;
@@ -37,8 +34,7 @@ public class UserMapper {
                     organization.getAddress(),
                     organization.getPhoneNumber(),
                     organization.getUsername(),
-                    organization.getScore(),
-                    organization.getNIF(),  // Specific to Organization
+                    organization.getNIF(),
                     organization.getSTAT(),
                     organization.getAccreditation(),
                     organization.getCreationDate()
@@ -79,7 +75,7 @@ public class UserMapper {
                     organizationDto.getCommunityList().stream().map(CommunityMapper::mapToCommunity).toList(),
                     new ArrayList<>(),
                     organizationDto.getScore(),
-                    organizationDto.getNIF(),  // Specific to Organization
+                    organizationDto.getNIF(),
                     organizationDto.getSTAT(),
                     organizationDto.getAccreditation(),
                     organizationDto.getCreationDate()

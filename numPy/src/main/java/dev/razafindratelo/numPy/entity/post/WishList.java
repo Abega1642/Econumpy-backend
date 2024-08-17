@@ -15,7 +15,7 @@ import java.time.LocalDate;
 @DiscriminatorValue("WISHLIST")
 public class WishList extends Post{
 
-    @Column(name = "number_of_vote", nullable = false)
+    @Column(name = "number_of_vote")
     private long numberOfVote;
 
     public WishList(String postId,

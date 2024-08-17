@@ -28,8 +28,7 @@ import java.util.List;
 @Service
 public class EventServiceImpl implements EventService {
 
-    private final UserRepository userRepository;
-    PostRepository postRepository;
+    private PostRepository postRepository;
 
     @Override
     public EventDto createEvent(EventDto eventDto, User user) {

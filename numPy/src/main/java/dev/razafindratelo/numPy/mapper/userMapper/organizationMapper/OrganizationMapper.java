@@ -3,9 +3,11 @@ package dev.razafindratelo.numPy.mapper.userMapper.organizationMapper;
 import dev.razafindratelo.numPy.dtos.userDtos.OrganizationDto;
 import dev.razafindratelo.numPy.entity.post.Post;
 import dev.razafindratelo.numPy.entity.user.Organization;
+import dev.razafindratelo.numPy.entity.user.User;
 import dev.razafindratelo.numPy.mapper.communityMapper.CommunityMapper;
 import dev.razafindratelo.numPy.mapper.postMapper.PostMapper;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +19,6 @@ public class OrganizationMapper {
                 organization.getAddress(),
                 organization.getPhoneNumber(),
                 organization.getUsername(),
-                organization.getScore(),
                 organization.getNIF(),
                 organization.getSTAT(),
                 organization.getAccreditation(),
@@ -50,6 +51,23 @@ public class OrganizationMapper {
                 .toList();
         organization1.setPosts(posts);
 
+        return organization1;
+    }
+    public static Organization toOrganization2() {
+        Organization organization1 = new Organization(
+                "john",
+                "aaaa",
+                "",
+                "",
+                "",
+                new ArrayList<>(),
+                new ArrayList<>(),
+                0,
+                "",
+                "",
+                "",
+                LocalDate.now()
+        );
         return organization1;
     }
 }

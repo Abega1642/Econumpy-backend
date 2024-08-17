@@ -57,10 +57,16 @@ public class IndividualServiceImp implements IndividualService {
 
     @Override
     public IndividualDto getIndividualById(String individualId) {
-        Individual individual = (Individual) individualRepository.findById(individualId).orElseThrow(
-                ()-> new ResourceNotFoundException("Individual with " + individualId + " not found")
-        );
-        return IndividualMapper.toIndividualDto(individual);
+        User user =individualRepository.findById(individualId)
+                .orElse(null);
+        if(user == null || user instanceof Organization){
+//            throw new ResourceNotFoundException("Individual with id " + individualId + " not found");
+            return null;
+        } else if (user instanceof Individual){
+            Individual individual = (Individual) user;
+            return IndividualMapper.toIndividualDto(individual);
+        }
+        return null;
     }
 
     @Override

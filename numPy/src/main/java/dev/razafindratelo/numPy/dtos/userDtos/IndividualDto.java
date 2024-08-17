@@ -19,12 +19,9 @@ public class IndividualDto extends UserDto {
             String address,
             String phoneNumber,
             String username,
-            List<CommunityDto> communityList,
-            List<PostDto> posts,
-            long score,
             LocalDate birthDate
     ) {
-        super(email, password, address, phoneNumber, username, score);
+        super(email, password, address, phoneNumber, username);
         this.birthDate = birthDate;
     }
 }

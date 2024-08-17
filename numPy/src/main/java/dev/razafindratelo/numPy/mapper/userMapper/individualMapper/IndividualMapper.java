@@ -6,6 +6,7 @@ import dev.razafindratelo.numPy.entity.user.Individual;
 import dev.razafindratelo.numPy.mapper.communityMapper.CommunityMapper;
 import dev.razafindratelo.numPy.mapper.postMapper.PostMapper;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,15 +18,6 @@ public class IndividualMapper {
                 individual.getAddress(),
                 individual.getPhoneNumber(),
                 individual.getUsername(),
-                individual.getCommunities()
-                        .stream()
-                        .map(CommunityMapper::mapToCommunityDto)
-                        .toList(),
-                individual.getPosts()
-                        .stream()
-                        .map(PostMapper::mapToPostDto)
-                        .toList(),
-                individual.getScore(),
                 individual.getBirthDate()
         );
     }
@@ -51,6 +43,20 @@ public class IndividualMapper {
                 .toList();
         individual.setPosts(posts);
 
+        return individual;
+    }
+    public static Individual toIndividual2() {
+        Individual individual = new Individual(
+                "john",
+                "aaaa",
+                "",
+                "",
+                "",
+                new ArrayList<>(),
+                new ArrayList<>(),
+                0,
+                LocalDate.now()
+        );
         return individual;
     }
 

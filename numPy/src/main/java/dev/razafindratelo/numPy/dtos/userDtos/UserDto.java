@@ -21,7 +21,7 @@ public class UserDto {
     protected List<PostDto> posts;
     protected long score;
 
-    public UserDto(String email, String password, String address, String phoneNumber, String username, long score) {
+    public UserDto(String email, String password, String address, String phoneNumber, String username) {
         this.email = email;
         this.password = password;
         this.address = address;
@@ -29,6 +29,6 @@ public class UserDto {
         this.username = username;
         this.communityList = new ArrayList<>();
         this.posts = new ArrayList<>();
-        this.score = score;
+        this.score = 0;
     }
 }
