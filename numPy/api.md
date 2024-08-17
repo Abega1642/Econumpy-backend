@@ -89,7 +89,7 @@
 
 #   Post _ Event - Endpoints :
 
--   all to do lists : 
+-   all post events lists : 
     -   `GET / http://ip:8080/api/events`
     - status code : `200`
     - return type : List of all event posts.
